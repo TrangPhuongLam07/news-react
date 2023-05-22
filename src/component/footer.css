@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.footer-page {
+    background-color: #c31e40;
+    padding: 38px 0 35px;
+}
+.footer-page .container {
+    display: flex;
+    justify-content: space-between;
+}
+.footer-page .non-tab {
+    min-width: 250px;
+}.footer-page .logo-footer {
+     margin-top: 20px;
+     width: 190px;
+     font-size: 0;
+     height: 85px;
+     display: block;
+     color: #ffffff;
+     background: url("/src/Image/logo-footer.png") center center/190px no-repeat;
+ }
+.footer-page .non-tab .title {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #fff;
+    margin-top: 20px;
+    min-width: 250px;
+}
+.footer-page .primary {
+    max-width: 452px;
+}
+.footer-page .primary p {
+    font-size: 15px;
+    line-height: 22px;
+    color: #fff;
+    margin-bottom: 0.2em;
+}
+.footer-page .bold {
+    font-weight: 600;
+}
+.footer-page .secondary .title{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #fff;
+    margin-bottom: 7px
+}
+.footer-page .contract {
+    margin-bottom: 19px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+.footer-page .contact, .footer-page .phone, .footer-page a, .footer-page p {
+    font-size: 15px;
+    line-height: 22px;
+    color: #fff;
+    margin-bottom: 3px;
+}

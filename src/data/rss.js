@@ -11,9 +11,9 @@ const  parse = async url =>{
     const feed = await parser.parseURL(url);
     feed.items.forEach(item =>{
         article.push( item );
-        console.log(item)
+        // console.log(item)
     });
-    // console.log(article)
+    console.log(feed)
 }
 
 await parse(feedURL);
@@ -25,14 +25,17 @@ await parse(feedURL);
 // }
 
 result = []
-for(var i = 0; i < 5;i++) {
+for(var i = 0; i < article.length;i++) {
+
+    let id = article[i].guid.split("/");
 
     let object = {
-        id : article[i].guid,
+        id : id[id.length - 1],
         title: article[i].title,
         link: article[i].link,
         content: article[i].contentSnippet,
-        image : Parser(article[i].content)[0].props.children.props.src.toString().replace("/80x80","")
+        image : Parser(article[i].content)[0].props.children.props.src.toString().replace("/80x80",""),
+        date: article[i].pubDate
     }
     result.push(object)
 }

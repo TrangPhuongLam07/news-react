@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import result from "../data/rss";
-import "./main.css"
-class ListNews extends React.Component {
+import "./css/main.css"
+class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state={listNew:result}
@@ -15,8 +15,8 @@ class ListNews extends React.Component {
                <div>
                    {
                        this.state.listNew.slice(0,1).map((item) =>(
-                       <div >
-                         <New key ={item.id} id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image}></New>
+                       <div key ={item.id}  >
+                         <New  id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image}></New>
                        </div>
                        ))
                    }
@@ -25,9 +25,9 @@ class ListNews extends React.Component {
                     <h2 className={"wrap-title"}>Tin khác</h2>
                 </div>
                 <div className={"row mb-3 mt-3"}>
-                    {this.state.listNew.slice(1).map((item)=>(
-                            <div className={"card-item col-3"}>
-                                <NewItem key ={item.id} id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image}></NewItem>
+                    {this.state.listNew.slice(1,5).map((item)=>(
+                            <div key ={item.id} className={"card-item col-3"}>
+                                <NewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image}></NewItem>
                             </div>
 
                     ))}
@@ -71,7 +71,7 @@ class New extends React.Component{
                         <img className={"image-card"} src={this.state.image}/>
                     </div>
                     <div className={"col-6 pd-l-30 text-just"} >
-                        <h5 className="card-title card-main"><a href={this.state.link}>{this.state.title}</a></h5>
+                        <h5 className="card-title card-main"><a href={`/Trang-Chu/${this.state.id}`}>{this.state.title}</a></h5>
                         <p className="card-text">{this.state.content}</p>
                     </div>
                 </div>
@@ -99,11 +99,11 @@ class NewItem extends React.Component{
                     <img className="card-img-top image-card_item" src={this.state.image}
                          alt="Card image cap"/>
                     <div className="card-body">
-                        <h5 className={"card-title"}><a href={this.state.link}>{this.state.title}</a></h5>
+                        <h5 className={"card-title"}><a href={`/Trang-Chu/${this.state.id}`}>{this.state.title}</a></h5>
                     </div>
                 </div>
         );
     }
 }
 
-export default ListNews;
+export default HomePage;

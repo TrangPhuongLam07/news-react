@@ -13,7 +13,7 @@
 .warp--author{
     border-top: solid 1px #dedede;
     border-bottom: solid 1px #dedede;
-    margin: 20px 0px;
+    margin-top: 20px;
 
 }
 .author {
@@ -29,13 +29,31 @@
     margin-bottom: 20px;
 }
 .main--image {
-    max-width: 98%;
+    max-width: 812px;
+    max-height: 580px;
 }
 .warp--image {
+    margin: 12px auto;
     text-align: center;
+    max-width: 812px;
+    max-height: 607px;
+    padding: 4px;
+}
+.video--des__margin {
+    margin-top: -7px !important;
+}
+.warp--image .detail--image {
+    /*background-color: #e6e6e6;*/
+    padding: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
 }
 .main--content {
     max-width:1000px !important ;
+    color: #4e4e4e;
+    margin: 0px auto;
+
 }
 .content {
     margin-top: 16px;
@@ -44,4 +62,69 @@
     line-height: 28px;
     text-align: justify;
     color: #4e4e4e;
+}
+.content.bold {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 165%;
+}
+.container-fluid .image-item{
+    width: 300px;
+    height: 200px;
+}
+.detail  .container-fluid {
+    width: 90%;
+}
+.container-fluid .item-news {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.item-news .title-news {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+}
+.item-news .title-news a {
+    color: #4e4e4e;
+}
+.item-news .title-news a:hover{
+    color: #c31e40;
+    text-decoration: none;
+}
+.item-news .title-content {
+    font-size: 15px;
+    line-height: 22px;
+    color: #4e4e4e;
+    text-align: justify;
+    font-weight: 400;
+}
+.item-news .col-9.body--news {
+    max-width: 65%;
+    margin-left: 10px;
+}
+.note-box {
+    background: #fffbf1;
+    border: 1px solid #ff7d00;
+    padding: 10px;
+    text-align: left;
+    margin-top: 1.6rem!important;
+    overflow: auto;
+}
+.note-box p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 165%;
+    text-align: justify;
+}
+.time {
+    margin-bottom: 20px;
+}
+p strong {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 165%;
+    text-align: justify;
 }

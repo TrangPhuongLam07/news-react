@@ -54,6 +54,11 @@
     width: 100%;
     height: 180px;
 }
+.warp {
+    border-bottom: 1px solid #c31e40;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 
 .warp .wrap-title {
     margin: 10px 0px;
@@ -63,6 +68,29 @@
     color: #c31e40;
     padding-right: 10px;
 }
+.warp.warp-top {
+    padding-left: 22px;
+    white-space: nowrap;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    margin-right: 4px;
+    background: url("/src/Image/icon-flat.svg") center left no-repeat;
+}
 .card-item .card .card-body {
     margin: 0px 5px;
 }
+.card-title > a:hover {
+    color: #c31e40;
+    text-decoration: none;
+}
+.item-news.home >.body--news {
+    margin-left: -50px !important;
+}
+.story--time {
+    font-size: 12px;
+    line-height: 14px;
+    color: #959595;
+}
+

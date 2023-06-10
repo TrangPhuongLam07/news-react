@@ -1,9 +1,10 @@
 import  RSSParser from 'rss-parser'
 import Parser from 'html-react-parser';
 
-export let result;
+// export let result;
+let data;
 
-const feedURL = "https://giaoducthoidai.vn/rss/home.rss"
+const feedURL = "https://giaoducthudo.giaoducthoidai.vn/rss/giao-duc"
 const parser = new RSSParser()
 let  article = []
 
@@ -11,21 +12,17 @@ const  parse = async url =>{
     const feed = await parser.parseURL(url);
     feed.items.forEach(item =>{
         article.push( item );
-        // console.log(item)
+        console.log(item)
     });
-    console.log(feed)
+    console.log("Giao duc:"+ feed)
 }
 
 await parse(feedURL);
 
 
-// function splitString(content){
-//
-//     return "";
-// }
 
-result = []
-for(var i = 0; i < article.length;i++) {
+data = []
+for(let i = 0; i < article.length;i++) {
 
     let id = article[i].guid.split("/");
     let image = "" ;
@@ -43,14 +40,7 @@ for(var i = 0; i < article.length;i++) {
         image : image,
         date: article[i].pubDate
     }
-    result.push(object)
+    data.push(object)
 }
-console.log(result)
-export default result
 
-
-
-
-
-
-
+export default data

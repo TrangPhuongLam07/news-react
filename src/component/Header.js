@@ -36,7 +36,7 @@ function Header() {
                   <div className={"container"}>
                       <ul className={"menu"}>
                         <li className={"menu-item home"}>
-                            <a className={"menu-link active"} href={""}>Trang chủ</a>
+                            <a className={"menu-link active"} href={"/Trang-Chu"}>Trang chủ</a>
                         </li>
                           <li className={"menu-item"}>
                               <a className={"menu-link "} href={""}>Giáo dục</a>

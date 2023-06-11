@@ -1,6 +1,6 @@
 import React from "react";
 import {result} from  "../data/rss.js"
-import "./header.css"
+import "./css/header.css"
 
 function Header() {
        return(
@@ -39,7 +39,7 @@ function Header() {
                             <a className={"menu-link active"} href={"/Trang-Chu"}>Trang chủ</a>
                         </li>
                           <li className={"menu-item"}>
-                              <a className={"menu-link "} href={""}>Giáo dục</a>
+                              <a className={"menu-link "} href={"/Giao-Duc"}>Giáo dục</a>
                           </li>
                           <li className={"menu-item"}>
                               <a className={"menu-link "} href={""}>Thời sự</a>

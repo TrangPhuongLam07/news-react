@@ -6,19 +6,21 @@ import "./css/detail.css";
 import "./css/main.css";
 import result from "../data/rss";
 import {convertDate} from "./api/dateTime";
+import {NotFound} from "./NotFound";
 import Text_to_speech from "./api/text_to_speech";
 
 
 
 export const  HomeDetail = React.memo(() =>{
     const [posts,setPosts] = useState({})
-
     const  [listNews,setListNews] = useState(result)
+    const [error,setError] = useState(null)
 
 
     const baseUrl = "https://giaoducthoidai.vn/";
     const params = useParams();
     const id = params.id;
+    console.log("Id:" + id)
 useEffect( () => {
         request(baseUrl + id, (error, response, html) => {
            if (!error && response.statusCode === 200) {
@@ -35,14 +37,48 @@ useEffect( () => {
                const headingBody = $('.article ').find('.article__body > h1,h2');
                const noteBook = $('body').find('.article .article__body > .notebox');
 
+               const onlyImage = $('body').find('.media-content .cms-body img');
+
+               console.log(onlyImage)
+
+
                //Kiểm tra nếu ảnh lấy ra lỗi thì sẽ lấy ảnh từ rss
-               // if(image === undefined || !image.toString().startsWith("http://")){
-               //    var myItem = result.find(item => item.id === id);
-               //    // console.log("Item:"+myItem.image)
-               //    image = myItem.image;
-               // }
+               if(image === undefined || !image.toString().startsWith("http://")){
+                  var myItem = result.find((item) => item.id == id);
+                  console.log(result);
+                  console.log(myItem)
+                  // console.log("Item:"+myItem.image)
+                  if(myItem !== undefined){
+                      image = myItem.image;
+                  }
+               }
 
                const items = [];
+
+               if(onlyImage !== undefined){
+                   var location ;
+                   var src;
+                   var text;
+                   var myItem = {}
+                   onlyImage.each((index,el) => {
+                       location = $(el).index();
+                       src = $(el).attr('src');
+                       text = $(el).attr("title");
+
+                       if(text !== undefined){
+                           myItem = {
+                               index : location,
+                               type : "only_image",
+                               src : src,
+                               text:text
+                           }
+                           items.push(myItem);
+                       }
+
+                       console.log($(el).attr('src').replace("160x100/",""));
+                       console.log($(el).attr("title"));
+                   })
+               }
                //Kiểm tra nếu tin có nhiều ảnh sẽ lấy vị trí mỗi ảnh để thêm vào tin
                if(listImage !== undefined){
                    listImage.each((index,el) => {
@@ -199,7 +235,7 @@ useEffect( () => {
 
            } else {
                console.log("Error")
-               console.log(error);
+              setError(true);
            }
        });
 
@@ -251,6 +287,18 @@ useEffect( () => {
                </div>
            );
        }
+       else if(item.type === "only_image"){
+           return (
+               <div className={"warp--image"}>
+                   <img className={"main--image"} src={item.src} alt={item.src}/>
+                   {
+                       item.text !== "" &&
+                       <div className={"detail--image"}>{item.text}</div>
+                   }
+
+               </div>
+           );
+       }
    });
 
 
@@ -265,10 +313,10 @@ useEffect( () => {
                            <h1 className={"title"}>{posts.title}</h1>
                            <div className={"warp--author"}>
                                <div className={"author"}>Tác giả : {posts.author}</div>
-
+                               <div className={"author"}>Ngày đăng: {posts.time}</div>
                            </div>
                            <div className={"time"}>
-                                <div className={"author"}>Ngày đăng: {posts.time}</div>
+
                             {/*<Text_to_speech text={posts.title +"\n" +posts.heading +"\n"*/}
                             {/*    + posts.news.map(item => {*/}
                             {/*        return item.text +"\n";*/}
@@ -316,6 +364,9 @@ useEffect( () => {
                         </div>
                     </div>
                 </div>
+            }
+            {
+                error && <NotFound>Không tìm thấy</NotFound>
             }
         </div>
     );

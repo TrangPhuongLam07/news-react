@@ -93,4 +93,14 @@
     line-height: 14px;
     color: #959595;
 }
+.min-height-700 {
+    min-height: 700px;
+}
+.warp.warp--kind {
+    border-left: 8px solid #c31e40;
+}
+.wrap-title.title-kind {
+    font-size: 30px;
+    padding-left: 10px;
+}
 

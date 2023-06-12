@@ -1,0 +1,27 @@
+.image-background .container .title{
+    margin-top: 70px;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 80px;
+}
+.min-height-500 {
+    min-height:500px;
+}
+.image-background {
+    background: url("/src/Image/404.jpg");
+}
+.font-100 {
+    font-size: 100px;
+}
+.width-100{
+    width: 100%;
+    text-align: center;
+}
+.back {
+    font-size: 25px;
+    background-color: #ce2e0e;
+    color: #ffffff !important;
+    padding: 8px;
+    margin: 0px auto;
+    border-radius: 4px;
+}

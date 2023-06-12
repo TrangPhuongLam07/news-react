@@ -12,6 +12,9 @@ const EducationPage = () => {
 
     return (
         <div className={"container mt-3"}>
+            <div className={"warp warp--kind"}>
+                <h1 className={"wrap-title title-kind"}>Giáo dục</h1>
+            </div>
 
             <div className={"warp warp-top"}>
                 <h2 className={"wrap-title"}>Tin mới nhất</h2>

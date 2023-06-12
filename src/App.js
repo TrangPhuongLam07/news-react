@@ -12,6 +12,8 @@ import Footer from "./component/Footer";
 import  {Routes,Route} from  'react-router-dom'
 import  {HomeDetail} from './component/HomeDetail.js'
 import EducationPage from "./component/Education";
+import {SearchPage} from "./component/Search";
+import {NotFound} from "./component/NotFound";
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
 
                         <Route path={"/Giao-Duc"} element={<EducationPage />}> </Route>
                         <Route path={"/Giao-Duc/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Search/:keyword"} element ={<SearchPage />} />
+                        <Route path={"*"} element ={<NotFound />} />
                     </Routes>
                 <Footer></Footer>
             </header>

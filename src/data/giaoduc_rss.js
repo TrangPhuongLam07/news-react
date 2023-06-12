@@ -1,7 +1,7 @@
 import  RSSParser from 'rss-parser'
 import Parser from 'html-react-parser';
 
-// export let result;
+
 let data;
 
 const feedURL = "https://giaoducthudo.giaoducthoidai.vn/rss/giao-duc"
@@ -18,7 +18,6 @@ const  parse = async url =>{
 }
 
 await parse(feedURL);
-
 
 
 data = []

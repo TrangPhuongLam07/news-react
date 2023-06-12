@@ -30,7 +30,7 @@ useEffect( () => {
                const author = $('body').find('.article .article__meta .author').text();
                const time = $('body').find('.article .article__meta .time').text();
                const heading = $('body').find('.article .article__sapo').text();
-               var image = $('body').find('.article .picture .pic').find('img').attr("src");
+               let image = $('body').find('.article .picture .pic').find('img').attr("src");
                const body = $('body').find('.article .article__body > p');
                const listImage =$('body').find('.article .article__body > .picture');
                const listVideo = $('body').find('.article .article__body > .video');
@@ -39,7 +39,9 @@ useEffect( () => {
 
                const onlyImage = $('body').find('.media-content .cms-body img');
 
-               console.log(onlyImage)
+               const qouteBlock = $('body').find('.article .article__body blockquote');
+
+               console.log("Qoute Block:" + qouteBlock.text() + qouteBlock.index())
 
 
                //Kiểm tra nếu ảnh lấy ra lỗi thì sẽ lấy ảnh từ rss
@@ -55,11 +57,28 @@ useEffect( () => {
 
                const items = [];
 
+               if(qouteBlock !== undefined){
+                   let location;
+                   let text;
+                   let myItem = {};
+                   qouteBlock.each((index,el) => {
+                       location = $(el).index();
+                       text = $(el).text();
+                       myItem = {
+                           index : location,
+                           type : "quote",
+                           src : "",
+                           text:text
+                       }
+                       items.push(myItem);
+                   })
+               }
+
                if(onlyImage !== undefined){
-                   var location ;
-                   var src;
-                   var text;
-                   var myItem = {}
+                   let location ;
+                   let src;
+                   let text;
+                   let myItem = {}
                    onlyImage.each((index,el) => {
                        location = $(el).index();
                        src = $(el).attr('src');
@@ -297,6 +316,13 @@ useEffect( () => {
                    }
 
                </div>
+           );
+       }
+       else if(item.type === "quote"){
+           return (
+               <blockquote className={"blockquote"}>
+                    <p>{item.text}</p>
+               </blockquote>
            );
        }
    });

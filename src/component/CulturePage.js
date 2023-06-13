@@ -1,6 +1,5 @@
 import React, {useState,useEffect,useRef} from "react";
 
-import data from "../data/giaoduc_rss";
 import {New, FooterNewItem} from "./HomePage.js";
 import {getData} from "../data/data_vanhoa";
 

@@ -1,8 +1,11 @@
 import React, {useState,useEffect} from "react";
 import result from "../data/rss";
+import {getAllData} from "../data/getAllData";
+
 import {FooterNewItem} from "./HomePage";
 import "./css/main.css";
 import {useParams} from "react-router-dom";
+
 export function SearchPage(){
     const [data,setData] = useState([]);
     const params = useParams();
@@ -10,10 +13,12 @@ export function SearchPage(){
     useEffect(()=>{
         document.title = "Tìm kiếm cho " +keyword
         if (keyword !== undefined && keyword !== ""){
-            setData(result.filter(item => (item.title.toString().includes(keyword) || item.content.toString().includes(keyword))))
+            setData(result.filter(item => (item.title.toString().includes(keyword.toLowerCase()) || item.content.toString().includes(keyword.toLowerCase()))))
         }
     },[])
-    console.log("Data:"+typeof data)
+
+    console.log(getAllData(keyword))
+
     return (
        <div className={"container"} >
            <div className={"min-height-700"} >
@@ -30,7 +35,9 @@ export function SearchPage(){
                            <FooterNewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date ={item.date} page ={"/"}></FooterNewItem>
                        </div>
 
-                   ))}
+                   ))
+
+                   }
 
 
                </div>

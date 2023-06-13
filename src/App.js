@@ -18,6 +18,7 @@ import ThoisuPage from "./component/ThoisuPage";
 import HocduongPage from "./component/HocduongPage"
 import CaculturePage from "./component/CulturePage";
 import SportPage from "./component/SportPage";
+import EducationAndLawPage from "./component/EducationAndLawPage";
 function App() {
     return (
         <div className="">
@@ -42,6 +43,9 @@ function App() {
                         <Route path={"/Thoi-su/:id"} element ={<HomeDetail />} />
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
                         <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Giao-Duc-Phap-Luat"} element={<EducationAndLawPage />}> </Route>
+                        <Route path={"/Giao-Duc-Phap-Luat/:id"} element ={<HomeDetail />} />
                     </Routes>
                 <Footer></Footer>
             </header>

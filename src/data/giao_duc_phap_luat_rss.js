@@ -10,6 +10,20 @@ const parser = new RSSParser();
 let article = []
 console.log("1----")
 
+
+async function parse(url) {
+
+    console.log("3----")
+    const feed = await parser.parseURL(url);
+    feed.items.forEach(item => {
+        article.push(item);
+    });
+    findNews();
+    console.log("Feed: "+feed)
+    console.log("size: "+article.length)
+
+
+}
   function findNews() {
     console.log("findNews()------")
     for (var i = 0; i < article.length; i++) {
@@ -46,25 +60,12 @@ export  function  getNews(nameEntry) {
     else if(nameEntry.localeCompare("nhan-ai")===0) parse(listFeedURL[4]).then(() => {console.log("Run Parser nhan ai----")});
     else if(nameEntry.localeCompare("media")===0) parse(listFeedURL[5]).then(() => {console.log("Run Parser media----")});
     else parse(listFeedURL[0]).then(() => {console.log("Run Parser home----")});
-console.log(nameEntry.localeCompare("phap-luat"))
-    findNews();
+
     return result;
 }
 
 
-  async function parse(url) {
 
-    console.log("3----")
-    const feed = await parser.parseURL(url);
-    feed.items.forEach(item => {
-        article.push(item);
-    });
-
-    console.log("Feed: "+feed)
-      console.log("size: "+article.length)
-
-
-}
 
 
 

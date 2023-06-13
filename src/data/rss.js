@@ -28,18 +28,23 @@ result = []
 for(var i = 0; i < article.length;i++) {
 
     let id = article[i].guid.split("/");
+    let image = "" ;
+    try {
+        image = Parser(article[i].content)[0].props.children.props.src.toString().replace("/80x80","")
+    }catch {
+        image = "Lỗi Ảnh"
+    }
 
     let object = {
         id : id[id.length - 1],
         title: article[i].title,
         link: article[i].link,
         content: article[i].contentSnippet,
-        image : Parser(article[i].content)[0].props.children.props.src.toString().replace("/80x80",""),
+        image : image,
         date: article[i].pubDate
     }
     result.push(object)
 }
-
 console.log(result)
 export default result
 

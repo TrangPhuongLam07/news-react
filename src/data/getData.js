@@ -4,7 +4,7 @@ import React,{useState,useEffect} from "react";
 
 export  function GetData(url) {
     const  [data,setData] = useState([])
-    useEffect(() =>{
+    // useEffect(() =>{
         request(url, (error, response, html) => {
             if(!error && response.statusCode == 200) {
                 const $ = cheerio.load(html); // load HTML
@@ -55,6 +55,6 @@ export  function GetData(url) {
                 console.log(error);
             }
         })
-    },[])
+    // },[])
     return data;
 }

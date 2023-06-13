@@ -5,7 +5,7 @@ import "./css/main.css";
 import {convertDate} from "./api/dateTime";
 
 import { Link } from "react-router-dom";
-import {FooterNewItem, New} from "./HomePage";
+import {FooterNewItem, New} from "./NewBody";
 class EducationAndLawPage extends React.Component {
     constructor(props) {
         super(props);

@@ -85,8 +85,6 @@ class HomePage extends React.Component {
 }
 
 export class New extends React.Component{
-
-
     constructor(props) {
         super(props);
         this.state={
@@ -102,16 +100,25 @@ export class New extends React.Component{
 
     render() {
         return (
+            // <div  className="col col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            //     <div className="card" >
+            //         <img className="card-img-left" src= {this.state.image}
+            //              alt="Card image cap"/>
+            //         <div className="card-body">
+            //             <h2><a href={this.state.link}>{this.state.title}</a></h2>
+            //             <p className="card-text">{this.state.content}</p>
+            //         </div>
+            //     </div>
+            // </div>
             <div>
                 <div className={"container"}>
 
                     <div className="card-body row">
                         <div className={"col-6"}>
-                            <Link to={`${this.state.page}${this.state.id}`} ><img className={"image-card"} src={this.state.image} alt={this.state.title}/></Link>
-
+                            <a href={`${this.state.page}${this.state.id}`}> <img className={"image-card"} src={this.state.image} alt={this.state.title}/></a>
                         </div>
                         <div className={"col-6 pd-l-30 text-just"} >
-                            <h5 className="card-title card-main"><Link to={`${this.state.page}${this.state.id}`} >{this.state.title}</Link></h5>
+                            <h5 className="card-title card-main"><a href={`${this.state.page}${this.state.id}`}>{this.state.title}</a></h5>
                             <label className={"story--time"}>{convertDate(this.state.date)}</label>
                             <p className="card-text">{this.state.content}</p>
                         </div>
@@ -138,9 +145,10 @@ export class NewItem extends React.Component{
     render() {
         return (
             <div className="card" >
-                <Link to={`${this.state.page}${this.state.id}`} ><img className={"card-img-top image-card_item"} src={this.state.image} alt={this.state.title}/></Link>
+                <a href={`${this.state.page}${this.state.id}`}><img className="card-img-top image-card_item" src={this.state.image}
+                                                                    alt={this.state.image}/></a>
                 <div className="card-body">
-                    <h5 className={"card-title"}><Link to={`${this.state.page}${this.state.id}`} >{this.state.title}</Link></h5>
+                    <h5 className={"card-title"}><a href={`${this.state.page}${this.state.id}`}>{this.state.title}</a></h5>
                     <label className={"story--time"}>{convertDate(this.state.date)}</label>
                 </div>
             </div>
@@ -166,10 +174,10 @@ export class FooterNewItem extends React.Component {
             <div className={"mb-3 mt-3"}>
                 <div  className={"row item-news home"}>
                     <div className={"col-4"}>
-                        <Link to={`${this.state.page}${this.state.id}`} ><img className={"image-item"} src={this.state.image} alt={this.state.title}/></Link>
+                        <a href={`${this.state.page}${this.state.id}`} > <img className={"image-item"} src={this.state.image} alt={this.state.title}/></a>
                     </div>
                     <div className={"col-8 body--news"}>
-                        <div className={"title-news"}><Link to={`${this.state.page}${this.state.id}`} >{this.state.title}</Link></div>
+                        <div className={"title-news"}><a href={`${this.state.page}${this.state.id}`} >{this.state.title}</a></div>
                         <label className={"story--time"}>{convertDate(this.state.date)}</label>
                         {this.state.content && <div className={"title-content"}>{this.state.content.split(".")[0]}.</div>}
                     </div>
@@ -179,5 +187,6 @@ export class FooterNewItem extends React.Component {
         );
     }
 }
+
 
 export default HomePage;

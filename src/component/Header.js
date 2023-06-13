@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React,{useState,useRef} from "react";
 import {result} from  "../data/rss.js"
 import "./css/header.css"
 import {Link} from "react-router-dom";
@@ -78,16 +78,7 @@ const listItem = [
 
 function Header() {
     const [active,setActive] = useState(1);
-    console.log(active)
-    // useEffect(()=>{
-    //     let input = document.getElementById("search");
-    //     input.addEventListener("keyup", function(event) {
-    //         if (event.keyCode === 13) {
-    //             event.preventDefault();
-    //             document.getElementById("search-button").click();
-    //         }
-    //     });
-    // },[])
+    console.log(active);
     const handleKeyPress = (event) => {
         if(event.key === 'Enter'){
             document.getElementById("search-button").click();
@@ -115,12 +106,12 @@ function Header() {
               <div className={"container logo-header"}>
                   <div className={"logo"}></div>
                   <div className={"search"}>
-                      <input id={"search"} type={"text"} className={"form-control txt-search"} onKeyPress={handleKeyPress} />
-                      <button id={"search-button"} onClick={() => {
+                      <input id={"search"} type={"text"} className={"form-control txt-search"} onKeyPress={handleKeyPress}/>
+                      <button id={"search-button"} onClick={Search}><i className={"fa fa-search icon"}onClick={() => {
                           Search();
                           setActive(0);
                       }
-                      }><i className={"fa fa-search icon"}></i></button>
+                      }></i></button>
 
                   </div>
                   <h2 className={"logo-gdtd"}>

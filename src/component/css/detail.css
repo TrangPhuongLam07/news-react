@@ -106,7 +106,7 @@
 }
 .item-news .col-9.body--news {
     max-width: 65%;
-    margin-left: 10px;
+    margin-left: 35px;
 }
 .note-box {
     background: #fffbf1;
@@ -115,6 +115,7 @@
     text-align: left;
     margin-top: 1.6rem!important;
     overflow: auto;
+    border-radius: 4px;
 }
 .note-box p {
     font-weight: 400;
@@ -130,4 +131,31 @@ p strong {
     font-size: 18px;
     line-height: 165%;
     text-align: justify;
+}
+.blockquote {
+    position: relative;
+    z-index: 0;
+    background: #fff;
+    border: 2px solid #dc3545;
+    box-sizing: border-box;
+    padding: 28px 24px;
+    margin-top: 30px!important;
+    border-radius: 10px;
+}
+.blockquote::before {
+    content: "";
+    position: absolute;
+    top: -23px;
+    background: #fff url("/src/Image/quote.png") center center/35px no-repeat;
+    width: 60px;
+    height: 45px;
+    left: 15px;
+}
+.blockquote > p {
+    margin-bottom: 0px !important;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 165%
+
 }

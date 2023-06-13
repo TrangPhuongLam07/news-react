@@ -1,16 +1,15 @@
 import React, {useState, useEffect, useRef} from "react";
-import data from "../data/giaoduc_rss";
 import {New, FooterNewItem} from "./HomePage.js";
-import {getData} from "../data/data_giaoduc";
+import {getData} from "../data/data_hocduong";
 
-const EducationPage = () => {
-    // const[listNew,setListNew] = useState(data);
+const ThoisuPage = () => {
+
     const[numberNew,setNumberNew] = useState(5);
-    const page ="/Giao-Duc/";
+    const page ="/Hoc-Duong/";
     const maxNew = useRef(5)
 
     useEffect(()=>{
-        document.title = "Giáo dục";
+        document.title = "Học Đường";
         // console.log("Data:" + getData())
 
         console.log("re-render")
@@ -30,7 +29,7 @@ const EducationPage = () => {
     return (
         <div className={"container mt-3"}>
             <div className={"warp warp--kind"}>
-                <h1 className={"wrap-title title-kind"}>Giáo dục</h1>
+                <h1 className={"wrap-title title-kind"}>Học đường</h1>
             </div>
 
             <div className={"warp warp-top"}>
@@ -68,4 +67,4 @@ const EducationPage = () => {
         </div>
     );
 };
-export default EducationPage;
+export default ThoisuPage;

@@ -1,25 +1,22 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState,useEffect,useRef} from "react";
+
 import data from "../data/giaoduc_rss";
 import {New, FooterNewItem} from "./HomePage.js";
-import {getData} from "../data/data_giaoduc";
+import {getData} from "../data/data_vanhoa";
 
-const EducationPage = () => {
+const CaculturePage = () => {
     // const[listNew,setListNew] = useState(data);
     const[numberNew,setNumberNew] = useState(5);
-    const page ="/Giao-Duc/";
+    const page ="/Van-Hoa/";
     const maxNew = useRef(5)
 
     useEffect(()=>{
-        document.title = "Giáo dục";
-        // console.log("Data:" + getData())
-
+        document.title = "Văn Hoá";
         console.log("re-render")
 
     },[])
-    console.log("Data:"+ getData().toString())
-    console.log("render")
     maxNew.current = getData().length;
-
+    console.log("MaxNew" + maxNew.current)
     const  loadMore = () =>{
         setNumberNew(prevState => prevState + 3);
     }
@@ -30,11 +27,11 @@ const EducationPage = () => {
     return (
         <div className={"container mt-3"}>
             <div className={"warp warp--kind"}>
-                <h1 className={"wrap-title title-kind"}>Giáo dục</h1>
+                <h1 className={"wrap-title title-kind"}>Văn Hoá</h1>
             </div>
 
             <div className={"warp warp-top"}>
-                <h2 className={"wrap-title"}>Tin mới nhất</h2>
+                <h2 className={"wrap-title"}>Tin nổi bật</h2>
             </div>
 
             <div>
@@ -68,4 +65,4 @@ const EducationPage = () => {
         </div>
     );
 };
-export default EducationPage;
+export default  CaculturePage;

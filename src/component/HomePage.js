@@ -6,14 +6,29 @@ import {convertDate} from "./api/dateTime";
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state={listNew:result}
+        this.state={listNew:result,indexItem:10}
         if(this.state.listNew==null) this.state.listNew = [];
+    }
+
+    load = ()=>{
+        this.setState(state =>({
+            ...state.listNew,
+            indexItem:state.indexItem + 3
+        }))
+    }
+
+    hide = () => {
+        this.setState(state =>({
+            ...state.listNew,
+            indexItem:10
+        }))
     }
 
 
     render() {
         document.title = "Trang chủ";
         let page = "/Trang-Chu/"
+        console.log("rerender")
         return (
             <div className={"container mt-3"}>
 
@@ -47,12 +62,19 @@ class HomePage extends React.Component {
                     <div className={"warp"}>
                         <h2 className={"wrap-title"}> Tin khác</h2>
                     </div>
-                    {this.state.listNew.slice(5,10).map((item)=>(
+                    {this.state.listNew.slice(5,this.state.indexItem).map((item)=>(
                         <div key ={item.id} className={""}>
                             <FooterNewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date ={item.date} page ={page}></FooterNewItem>
                         </div>
 
                     ))}
+
+                    <div className={"warp--btn__view"}>
+                        {this.state.listNew.length > this.state.indexItem &&
+                            <button onClick={this.load} className={"btn--load"}>Xem thêm</button>}
+                        {this.state.listNew.length <= this.state.indexItem &&
+                            <button onClick={this.hide} className={"btn--load"}>Hiển thị ít lại</button>}
+                    </div>
 
                 </div>
 
@@ -156,7 +178,7 @@ export class FooterNewItem extends React.Component {
                    <div className={"col-8 body--news"}>
                        <div className={"title-news"}><a href={`${this.state.page}${this.state.id}`} >{this.state.title}</a></div>
                        <label className={"story--time"}>{convertDate(this.state.date)}</label>
-                       <div className={"title-content"}>{this.state.content.split(".")[0]}.</div>
+                       {this.state.content && <div className={"title-content"}>{this.state.content.split(".")[0]}.</div>}
                    </div>
                </div>
        </div>

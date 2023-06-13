@@ -27,7 +27,7 @@ export function SearchPage(){
                    </div>
                    {data.map((item)=>(
                        <div key ={item.id} className={""}>
-                           <FooterNewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date ={item.date} page ={"/search/"}></FooterNewItem>
+                           <FooterNewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date ={item.date} page ={"/"}></FooterNewItem>
                        </div>
 
                    ))}

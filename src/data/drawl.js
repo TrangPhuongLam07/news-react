@@ -1,5 +1,5 @@
-import * as cheerio from 'cheerio'
-import  request from 'request-promise'
+import * as cheerio from 'cheerio';
+import  request from 'request-promise';
 
 // const cheerio = require('cheerio');
 

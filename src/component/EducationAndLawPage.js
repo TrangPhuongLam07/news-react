@@ -10,7 +10,7 @@ class EducationAndLawPage extends React.Component {
     constructor(props) {
         super(props);
        ;
-        this.state={listNew: RssData.getNews("phap-lua")}
+        this.state={listNew: RssData.getNews("phap-luat")}
         if(this.state.listNew==null) this.state.listNew = [];
     }
 

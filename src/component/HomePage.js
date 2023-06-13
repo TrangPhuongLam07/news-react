@@ -178,7 +178,7 @@ export class FooterNewItem extends React.Component {
                    <div className={"col-8 body--news"}>
                        <div className={"title-news"}><a href={`${this.state.page}${this.state.id}`} >{this.state.title}</a></div>
                        <label className={"story--time"}>{convertDate(this.state.date)}</label>
-                       <div className={"title-content"}>{this.state.content.split(".")[0]}.</div>
+                       {this.state.content && <div className={"title-content"}>{this.state.content.split(".")[0]}.</div>}
                    </div>
                </div>
        </div>

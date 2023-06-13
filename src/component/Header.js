@@ -78,7 +78,12 @@ const listItem = [
 
 function Header() {
     const [active,setActive] = useState(1);
-    console.log(active)
+    console.log(active);
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            document.getElementById("search-button").click();
+        }
+    }
 
        return(
           <header>
@@ -101,8 +106,12 @@ function Header() {
               <div className={"container logo-header"}>
                   <div className={"logo"}></div>
                   <div className={"search"}>
-                      <input id={"search"} type={"text"} className={"form-control txt-search"}/>
-                      <button onClick={Search}><i className={"fa fa-search icon"}></i></button>
+                      <input id={"search"} type={"text"} className={"form-control txt-search"} onKeyPress={handleKeyPress}/>
+                      <button id={"search-button"} onClick={Search}><i className={"fa fa-search icon"}onClick={() => {
+                          Search();
+                          setActive(0);
+                      }
+                      }></i></button>
 
                   </div>
                   <h2 className={"logo-gdtd"}>

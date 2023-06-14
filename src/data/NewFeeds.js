@@ -23,6 +23,7 @@ import {FooterNewItem, New} from "../component/NewBody";
             console.log("Size: "+articles.length)
             console.log(feed.items)
 
+
         } catch (error) {
             console.error('Error fetching news feed:', error);
         }

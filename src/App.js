@@ -18,7 +18,7 @@ import ThoisuPage from "./component/ThoisuPage";
 import HocduongPage from "./component/HocduongPage"
 import CaculturePage from "./component/CulturePage";
 import SportPage from "./component/SportPage";
-import EducationAndLawPage from "./component/EducationAndLawPage";
+import NewsFeed from "./data/NewFeeds";
 function App() {
     return (
         <div className="">
@@ -44,8 +44,34 @@ function App() {
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
                         <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
 
-                        <Route path={"/Giao-Duc-Phap-Luat"} element={<EducationAndLawPage />}> </Route>
+                        <Route path={"/Giao-Duc-Phap-Luat"} element={
+                            <NewsFeed url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"
+                                      namePage="Giáo Dục Và Pháp Luật"
+                                      urlPage="/Giao-Duc-Phap-Luat/" start={1} end={4}/>}> </Route>
                         <Route path={"/Giao-Duc-Phap-Luat/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Ket-Noi"} element={<
+                            NewsFeed url="https://giaoducthoidai.vn/rss/ket-noi-2.rss"
+                                     namePage="Kết Nối" urlPage="/Ket_Noi/" start={5} end={8}/>}> </Route>
+                        <Route path={"/Ket-Noi/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Trao-Doi"} element={
+                            <NewsFeed url="https://giaoducthoidai.vn/rss/trao-doi-3.rss"
+                                      namePage="Trao Đổi"
+                                      urlPage="/Trao-Doi/" start={9} end={12}/>}> </Route>
+                        <Route path={"/Trao-Doi/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Nhan-Ai"} element={
+                            <NewsFeed url="https://giaoducthoidai.vn/rss/nhan-ai-13.rss"
+                                      namePage="Nhân Ái"
+                                      urlPage="/Nhan-Ai/" start={13} end={16}/>}> </Route>
+                        <Route path={"/Nhan-Ai/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Media"} element={
+                            <NewsFeed url="https://giaoducthoidai.vn/rss/video-media-14.rss"
+                                      namePage="Media"
+                                      urlPage="/Media/" start={17} end={20}/>}> </Route>
+                        <Route path={"/Media/:id"} element ={<HomeDetail />} />
                     </Routes>
                 <Footer></Footer>
             </header>

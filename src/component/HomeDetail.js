@@ -26,10 +26,10 @@ useEffect( () => {
            if (!error && response.statusCode === 200) {
                console.log(baseUrl + id);
                const $ = cheerio.load(html); // load HTML
-               const title = $('body').find('.article .article__title').text();
-               const author = $('body').find('.article .article__meta .author').text();
-               const time = $('body').find('.article .article__meta .time').text();
-               const heading = $('body').find('.article .article__sapo').text();
+               let title = $('body').find('.article .article__title').text();
+               let author = $('body').find('.article .article__meta .author').text();
+               let time = $('body').find('.article .article__meta .time').text();
+               let heading = $('body').find('.article .article__sapo').text();
                let image = $('body').find('.article .picture .pic').find('img').attr("src");
                const body = $('body').find('.article .article__body > p');
                const listImage =$('body').find('.article .article__body > .picture');
@@ -57,7 +57,7 @@ useEffect( () => {
 
                const items = [];
 
-               if(qouteBlock !== undefined){
+               if(qouteBlock !== undefined && qouteBlock.index() != -1){
                    let location;
                    let text;
                    let myItem = {};
@@ -73,8 +73,12 @@ useEffect( () => {
                        items.push(myItem);
                    })
                }
-
-               if(onlyImage !== undefined){
+               if(onlyImage !== undefined && onlyImage.index() != -1){
+                   const item =  $('body').find('.media-content .text-wrap');
+                   title = item.find('.article__title ').text();
+                   author = item.find('.author-wrap .author').text()
+                   time = item.find('.time').text()
+                   console.log("Item:"+item);
                    let location ;
                    let src;
                    let text;
@@ -99,7 +103,7 @@ useEffect( () => {
                    })
                }
                //Kiểm tra nếu tin có nhiều ảnh sẽ lấy vị trí mỗi ảnh để thêm vào tin
-               if(listImage !== undefined){
+               if(listImage !== undefined && listImage.index() != -1){
                    listImage.each((index,el) => {
 
                        var location = $(el).index()
@@ -116,7 +120,7 @@ useEffect( () => {
                    })
                }
                //Kiểm tra sự tồn tại h1
-               if(headingBody !== undefined){
+               if(headingBody !== undefined && headingBody.index()!=-1){
                    let index;
                    let item;
                    headingBody.each((index,el)=>{
@@ -134,7 +138,7 @@ useEffect( () => {
 
                //Kiểm tra phần notebook của tin
 
-               if(noteBook !== undefined){
+               if(noteBook !== undefined && noteBook.index() != -1){
                    let myItem ={}
                    noteBook.each((index,el) => {
                        myItem = {
@@ -147,7 +151,7 @@ useEffect( () => {
                    })
                }
                 //Kiểm tra phần video
-                if(listVideo !== undefined){
+                if(listVideo !== undefined && listVideo.index() != -1){
                     listVideo.each((index,el) => {
                         var location = $(el).index();
                         var src = $(el).find("source ").attr("src");
@@ -225,7 +229,7 @@ useEffect( () => {
                })
 
 
-
+               console.log("Tilte:" + title)
                const object = {
                    title: title,
                    author:author,

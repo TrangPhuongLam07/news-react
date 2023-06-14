@@ -19,8 +19,6 @@ import HocduongPage from "./component/HocduongPage"
 import CaculturePage from "./component/CulturePage";
 import SportPage from "./component/SportPage";
 import EducationAndLawPage from "./component/EducationAndLawPage";
-import SuckhoePage from "./component/SuckhoePage";
-import ThegioiPage from "./component/ThegioiPage";
 function App() {
     return (
         <div className="">
@@ -45,10 +43,6 @@ function App() {
                         <Route path={"/Thoi-su/:id"} element ={<HomeDetail />} />
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
                         <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
-                        <Route path={"/Suc-Khoe"} element={<SuckhoePage />}> </Route>
-                        <Route path={"/Suc-Khoe/:id"} element ={<HomeDetail />} />
-                        <Route path={"/The-Gioi"} element={<ThegioiPage />}> </Route>
-                        <Route path={"/The-Gioi/:id"} element ={<HomeDetail />} />
 
                         <Route path={"/Giao-Duc-Phap-Luat"} element={<EducationAndLawPage />}> </Route>
                         <Route path={"/Giao-Duc-Phap-Luat/:id"} element ={<HomeDetail />} />

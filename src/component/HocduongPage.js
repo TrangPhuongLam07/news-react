@@ -2,7 +2,7 @@ import React from "react";
 import data from "../data/hocduong_rss";
 import {convertDate} from "./api/dateTime";
 
-class ThoisuPage extends React.Component {
+class HocduongPage extends React.Component {
     constructor(props) {
         super(props);
         this.state={listNew:data}
@@ -148,4 +148,4 @@ export class FooterNewItem extends React.Component {
 }
 
 
-export default ThoisuPage;
+export default HocduongPage;

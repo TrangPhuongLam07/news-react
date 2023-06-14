@@ -4,6 +4,7 @@ import {convertDate} from "./api/dateTime";
 
 export class New extends React.Component{
 
+ parser;
 
     constructor(props) {
         super(props);

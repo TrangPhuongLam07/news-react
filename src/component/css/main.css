@@ -126,10 +126,12 @@
     text-align: center;
     background-color: transparent;
 }
+
 .warp--btn__view .btn--load:hover {
     background-color: #c31e40;
     border-color: #c31e40;
     color: #fff;
 }
+
 
 

@@ -77,7 +77,7 @@ const listItem = [
 ]
 
 function Header() {
-    const [active,setActive] = useState(1);
+    const [active,setActive] = useState(-1);
     console.log(active);
     const handleKeyPress = (event) => {
         if(event.key === 'Enter'){
@@ -176,7 +176,9 @@ function Header() {
 
 function Search(){
     let keyword = document.getElementById("search").value
-    document.location.href= "/Search/"+keyword;
+    if(keyword != ""){
+        document.location.href= "/Search/"+keyword;
+    }
 }
 
 export default React.memo(Header);

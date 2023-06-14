@@ -15,6 +15,8 @@ export const  HomeDetail = React.memo(() =>{
     const [posts,setPosts] = useState({})
     const  [listNews,setListNews] = useState(result)
     const [error,setError] = useState(null)
+    const [show,setShow] = useState(false)
+    const [maxNew,setMaxNew] = useState(5)
 
 
     const baseUrl = "https://giaoducthoidai.vn/";
@@ -47,16 +49,20 @@ useEffect( () => {
                //Kiểm tra nếu ảnh lấy ra lỗi thì sẽ lấy ảnh từ rss
                if(image === undefined || !image.toString().startsWith("http://")){
                   var myItem = result.find((item) => item.id == id);
-                  console.log(result);
+                  console.log("Image:" + image);
                   console.log(myItem)
                   // console.log("Item:"+myItem.image)
                   if(myItem !== undefined){
                       image = myItem.image;
+                  }else {
+                      image ="";
                   }
                }
 
                const items = [];
 
+
+                //Kiem tra neu co du lieu quote block thì sẽ lấy dữ liệu và đánh index trong list item
                if(qouteBlock !== undefined && qouteBlock.index() != -1){
                    let location;
                    let text;
@@ -73,6 +79,7 @@ useEffect( () => {
                        items.push(myItem);
                    })
                }
+               //Kiem tra neu trang chi co hinh anh thi lay du lieu va danh index
                if(onlyImage !== undefined && onlyImage.index() != -1){
                    const item =  $('body').find('.media-content .text-wrap');
                    title = item.find('.article__title ').text();
@@ -119,7 +126,7 @@ useEffect( () => {
                        items.push(item)
                    })
                }
-               //Kiểm tra sự tồn tại h1
+               //Kiểm tra sự tồn tại h1 va danh index
                if(headingBody !== undefined && headingBody.index()!=-1){
                    let index;
                    let item;
@@ -136,7 +143,7 @@ useEffect( () => {
                    })
                }
 
-               //Kiểm tra phần notebook của tin
+               //Kiểm tra phần notebook của tin va danh index
 
                if(noteBook !== undefined && noteBook.index() != -1){
                    let myItem ={}
@@ -150,7 +157,7 @@ useEffect( () => {
                        items.push(myItem)
                    })
                }
-                //Kiểm tra phần video
+                //Kiểm tra phần video va danh index
                 if(listVideo !== undefined && listVideo.index() != -1){
                     listVideo.each((index,el) => {
                         var location = $(el).index();
@@ -176,7 +183,7 @@ useEffect( () => {
                         item = $(el);
                         index = item.index();
                         if(item.find('strong').text() === ""){
-
+                        //Kiem tra xem co phai la the strong k
                             myItem =  {
                                 index : index,
                                 type :"text",
@@ -223,7 +230,7 @@ useEffect( () => {
                //     }
                //     items.push(myItem);
                // }
-               //Săp xếp lại mảng để thêm vào bảng tin
+               //Săp xếp lại mảng dựa trên index để thêm vào bảng tin
                items.sort((a,b)=> {
                    return a.index > b.index ? 1 : -1;
                })
@@ -268,6 +275,7 @@ useEffect( () => {
 
    //xây dựng compoent để hiển thị
    const line = (item => {
+       // Nếu type = text sẽ định dang theo kiểu chữ thường của trang báo
        if(item.type === "text"){
            return (
              <p className={"content"}>{item.text}</p>
@@ -332,8 +340,20 @@ useEffect( () => {
    });
 
 
+   //Lấy component API convert text to speech
+    const audio = () => {
+        console.log("audio")
+        return (
+            <Text_to_speech text={posts.title +"\n" +posts.heading.toString().substring(8) +"\n"
+            + posts.news.map(item => {
+                return item.text +"\n";
+            })
 
+        }></Text_to_speech>
+        )
+    }
 
+    console.log("render")
     return(
         <div className={"detail"}>
             {posts !== null && posts.news !== undefined
@@ -345,7 +365,14 @@ useEffect( () => {
                                <div className={"author"}>Tác giả : {posts.author}</div>
                                <div className={"author"}>Ngày đăng: {posts.time}</div>
                            </div>
-                           <div className={"time"}>
+                           <div className={"time"} id ="time">
+
+                               {/*Nếu bấm vào button báo nói sẽ hiển thị thẻ audio và ẩn đi button*/}
+                               {!show && <button className={"btn btn-audio"} onClick={() => {
+                                   setShow(true)
+                               }
+                               }>Báo nói</button>}
+                               {show && audio()}
 
                             {/*<Text_to_speech text={posts.title +"\n" +posts.heading +"\n"*/}
                             {/*    + posts.news.map(item => {*/}
@@ -355,11 +382,13 @@ useEffect( () => {
                             {/*}></Text_to_speech>*/}
                            </div>
                            <h5 className={"title--heading"}>{posts.heading}</h5>
-                           <div className={"warp--image"}>
-                               <img className={"main--image"} src={posts.image} alt={posts.image}/>
-                               <div className={"detail--image"}>Ảnh minh hoạ</div>
+                           {posts.image !== "" &&
+                               <div className={"warp--image"}>
+                                   <img className={"main--image"} src={posts.image} alt={posts.image}/>
+                                   <div className={"detail--image"}>Ảnh minh hoạ</div>
 
-                           </div>
+                               </div>
+                           }
 
                        </div>
 
@@ -378,7 +407,7 @@ useEffect( () => {
                             <h2 className={"wrap-title"}>Tin khác</h2>
                         </div>
                         <div className={"mb-3 mt-3"}>
-                            {listNews.filter(a => a.id !== id).slice(1,5).map((item)=>(
+                            {listNews.filter(a => a.id !== id).slice(1,maxNew).map((item)=>(
                                 <div key={item.id} className={"row item-news"}>
                                     <div className={"col-3"}>
                                         <a href={`/Trang-Chu/${item.id}`} > <img className={"image-item"} src={item.image} alt={item.image}/></a>
@@ -391,6 +420,11 @@ useEffect( () => {
                                 </div>
 
                             ))}
+                        </div>
+                        <div className={"warp--btn__view"}>
+                            {/*Button kiểm tra xem thêm*/}
+                            {maxNew < listNews.length && <button onClick={()=> setMaxNew(prevState => prevState + 3)} className={"btn--load"}>Xem thêm</button>}
+                            {maxNew >=listNews.length && <button onClick={()=> setMaxNew(5)} className={"btn--load"}>Hiển thị ít lại</button>}
                         </div>
                     </div>
                 </div>

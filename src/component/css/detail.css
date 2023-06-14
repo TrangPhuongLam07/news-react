@@ -125,6 +125,7 @@
 }
 .time {
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 p strong {
     font-weight: 600;
@@ -158,4 +159,14 @@ p strong {
     font-size: 17px;
     line-height: 165%
 
+}
+.btn.btn-audio{
+    border-radius: 20%;
+    color: #fff;
+    background-color: #c31e40;
+
+}
+
+.btn.btn-audio:hover{
+    opacity: 0.8;
 }

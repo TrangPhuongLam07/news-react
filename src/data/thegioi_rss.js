@@ -2,7 +2,7 @@ const RSSParser = require('rss-parser')
 const Parser = require('html-react-parser')
 export let data;
 
-const feedURL = "https://giaoducthoidai.vn/rss/hoc-duong-5.rss"
+const feedURL = "https://giaoducthoidai.vn/rss/the-gioi-10.rss"
 const parser = new RSSParser()
 let  article = []
 

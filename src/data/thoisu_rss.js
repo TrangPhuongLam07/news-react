@@ -1,10 +1,8 @@
-import  RSSParser from 'rss-parser'
-import Parser from 'html-react-parser';
+const RSSParser = require('rss-parser')
+const Parser = require('html-react-parser')
+export let data;
 
-
-let data;
-
-const feedURL = "https://giaoducthudo.giaoducthoidai.vn/rss/thoi-su"
+const feedURL = "https://giaoducthoidai.vn/rss/thoi-su-1.rss"
 const parser = new RSSParser()
 let  article = []
 
@@ -12,9 +10,9 @@ const  parse = async url =>{
     const feed = await parser.parseURL(url);
     feed.items.forEach(item =>{
         article.push( item );
-        console.log(item)
+        // console.log(item)
     });
-    console.log("Thoi su:"+ feed)
+    console.log(feed)
 }
 
 await parse(feedURL);
@@ -42,4 +40,4 @@ for(let i = 0; i < article.length;i++) {
     data.push(object)
 }
 
-export default data
+export default data;

@@ -33,7 +33,7 @@ const EducationPage = () => {
             </div>
 
             <div className={"warp warp-top"}>
-                <h2 className={"wrap-title"}>Tin mới nhất</h2>
+                <h2 className={"wrap-title"}>Tin nổi bật</h2>
             </div>
 
             <div>

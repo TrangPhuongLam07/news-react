@@ -170,3 +170,15 @@ p strong {
 .btn.btn-audio:hover{
     opacity: 0.8;
 }
+.warp--btn__sroll{
+
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+}
+.btn.btn--auto__sroll {
+    padding:8px ;
+    border-radius: 10px;
+    background-color: #61dafb;
+    color: #ffffff;
+}

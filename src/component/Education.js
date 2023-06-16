@@ -63,6 +63,10 @@ const EducationPage = () => {
                 </div>
 
             </div>
+            <div className={"wrap--btn__sroll-top"}>
+                {<button className={"btn btn__sroll-top"} onClick={()=>{window.scrollTo({top: 0, behavior: 'smooth'})}} >
+                    <i className="fa fa-arrow-up mr-1" aria-hidden="true"></i>Trở về đầu</button>}
+            </div>
 
         </div>
     );

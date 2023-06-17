@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Parser from 'rss-parser';
 import ImgParser from 'html-react-parser';
-import {Link} from "react-router-dom";
-import {convertDate} from "../component/api/dateTime";
 import {FooterNewItem, New} from "../component/NewBody";
+import NewsAnother from "../component/NewAnother";
+import * as news from "../data/NewsRSS"
 
 
  export const NewsFeed = (props) => {
+    /* let result = news.getNews(props.url)*/
     const [articles, setArticles] = useState([]);
     let result =[];
     useEffect(() => {
@@ -51,7 +52,9 @@ import {FooterNewItem, New} from "../component/NewBody";
          result.push(object)
      }
      console.log("Result: " + result.length)
-
+     const getNews = () => {
+         return result
+     }
      document.title = props.namePage;
      let page = props.urlPage;
      return (
@@ -65,7 +68,7 @@ import {FooterNewItem, New} from "../component/NewBody";
              </div>
 
              <div>
-                 {result.slice(props.start,props.end).map((item) =>(
+                 {result!=undefined&&result.slice(props.start,props.end).map((item) =>(
                          <div key ={item.id}  >
                              <New  id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date={item
                                  .date} page ={page}></New>
@@ -78,14 +81,7 @@ import {FooterNewItem, New} from "../component/NewBody";
                  <div className={"warp"}>
                      <h2 className={"wrap-title"}> Tin khác</h2>
                  </div>
-                 {result.slice(props.end,props.end+4).map((item)=>(
-                     <div key ={item.id} className={""}>
-                         <FooterNewItem   id={item.id} title={item.title} link={item.link} content={item.content}  image ={item.image} date ={item.date} page ={page}></FooterNewItem>
-                     </div>
-
-                 ))}
-                 <div className={"warp--btn__view"}>
-                 </div>
+                 <NewsAnother news={result} pageName ={page}></NewsAnother>
              </div>
 
          </div>

@@ -27,7 +27,6 @@ export class New extends React.Component{
                     <div className="card-body row">
                         <div className={"col-6"}>
                             <Link to={`${this.state.page}${this.state.id}`} ><img className={"image-card"} src={this.state.image} alt={this.state.title}/></Link>
-
                         </div>
                         <div className={"col-6 pd-l-30 text-just"} >
                             <h5 className="card-title card-main"><Link to={`${this.state.page}${this.state.id}`} >{this.state.title}</Link></h5>

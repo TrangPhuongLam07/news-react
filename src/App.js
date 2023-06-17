@@ -19,6 +19,7 @@ import HocduongPage from "./component/HocduongPage"
 import CaculturePage from "./component/CulturePage";
 import SportPage from "./component/SportPage";
 import NewsFeed from "./data/NewFeeds";
+import NewsDetail from "./component/NewsDetail";
 function App() {
     return (
         <div className="">
@@ -48,30 +49,33 @@ function App() {
                             <NewsFeed url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"
                                       namePage="Giáo Dục Và Pháp Luật"
                                       urlPage="/Giao-Duc-Phap-Luat/" start={1} end={4}/>}> </Route>
-                        <Route path={"/Giao-Duc-Phap-Luat/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Giao-Duc-Phap-Luat/:id"} element ={
+                            <NewsDetail url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"
+                                        urlPage="/Giao-Duc-Phap-Luat/"/>} />
 
-                        <Route path={"/Ket-Noi"} element={<
-                            NewsFeed url="https://giaoducthoidai.vn/rss/ket-noi-2.rss"
-                                     namePage="Kết Nối" urlPage="/Ket_Noi/" start={5} end={8}/>}> </Route>
-                        <Route path={"/Ket-Noi/:id"} element ={<HomeDetail />} />
+
+                        <Route path={"/Ket-Noi"} element={
+                            <NewsFeed url="https://giaoducthoidai.vn/rss/ket-noi-2.rss"
+                                     namePage="Kết Nối" urlPage="/Ket-Noi/" start={5} end={8}/>}> </Route>
+                        <Route path={"/Ket-Noi/:id"} element ={<NewsDetail url="https://giaoducthoidai.vn/rss/ket-noi-2.rss"/>} />
 
                         <Route path={"/Trao-Doi"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/trao-doi-3.rss"
                                       namePage="Trao Đổi"
                                       urlPage="/Trao-Doi/" start={9} end={12}/>}> </Route>
-                        <Route path={"/Trao-Doi/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Trao-Doi/:id"} element ={<NewsDetail url="https://giaoducthoidai.vn/rss/trao-doi-3.rss"/>} />
 
                         <Route path={"/Nhan-Ai"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/nhan-ai-13.rss"
                                       namePage="Nhân Ái"
                                       urlPage="/Nhan-Ai/" start={13} end={16}/>}> </Route>
-                        <Route path={"/Nhan-Ai/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Nhan-Ai/:id"} element ={<NewsDetail url="https://giaoducthoidai.vn/rss/nhan-ai-13.rss"/>} />
 
                         <Route path={"/Media"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/video-media-14.rss"
                                       namePage="Media"
                                       urlPage="/Media/" start={17} end={20}/>}> </Route>
-                        <Route path={"/Media/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Media/:id"} element ={<NewsDetail url="https://giaoducthoidai.vn/rss/video-media-14.rss"/>} />
                     </Routes>
                 <Footer></Footer>
             </header>

@@ -1,7 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {convertDate} from "./api/dateTime";
-
 export class New extends React.Component{
 
  parser;
@@ -66,7 +65,17 @@ export class NewItem extends React.Component{
     }
 }
 
+
 export class FooterNewItem extends React.Component {
+     /*navigate = useNavigate();
+
+
+     handleRedirect = () => {
+
+       this.navigate("/Giao-Duc-Phap-Luat/:id");
+         this.navigate("/Giao-Duc-Phap-Luat/:id"); // Chuyển hướng lần thứ hai
+    };*/
+
     constructor(props) {
         super(props);
         this.state={
@@ -84,7 +93,7 @@ export class FooterNewItem extends React.Component {
             <div className={"mb-3 mt-3"}>
                 <div  className={"row item-news home"}>
                     <div className={"col-4"}>
-                        <Link to={`${this.state.page}${this.state.id}`} ><img className={"image-item"} src={this.state.image} alt={this.state.title}/></Link>
+                        <Link to={`${this.state.page}${this.state.id}`} ><img  className={"image-item"} src={this.state.image} alt={this.state.title}/></Link>
                     </div>
                     <div className={"col-8 body--news"}>
                         <div className={"title-news"}><Link to={`${this.state.page}${this.state.id}`} >{this.state.title}</Link></div>

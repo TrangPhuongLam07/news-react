@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import NewsAnother from "./NewAnother";
 import * as newsRSS from "../data/NewsRSS"
 const NewsDetail = (props) => {
     console.log("1news: ----")
-    const queryParameters = new URLSearchParams(window.location.search)
-    const type = queryParameters.get("id")
-    const name = queryParameters.get("page")
     const [newsContent, setNewsContent] = useState({});
-    const params = useParams();
-    const id = params.id;
+    const {id} = useParams();
     const result = newsRSS.getNews(props.url)
     console.log("id: ----" + id)
     useEffect(() => {
@@ -17,7 +13,11 @@ const NewsDetail = (props) => {
         fetchNewsContent().then(() => {
             console.log("Detail news in useEffect")
         });
-    }, []);
+        //Luôn hiển thị ở đầu trang
+        //Dùng id làm tham số cho effect để effect biết là 2 url là khác nhau
+        //Không có là không có routing được
+        window.scrollTo(0, 0);
+    }, [id]);
     const fetchNewsContent = async () => {
         const CORS_PROXY = 'https://giaoducthoidai.vn/';
 
@@ -336,7 +336,7 @@ const NewsDetail = (props) => {
                         <h5 className={"title--heading"}>{newsContent.heading}</h5>
                         {/*Hiện image đầu tiên*/}
                         <div className={"warp--image"}>
-                            <img className={"main--image"} src={newsContent.srcImg} alt={newsContent.altImg}/>
+                            <img className={"main--image"} src={newsContent.srcImg} alt={newsContent.srcImg}/>
                             <div className={"detail--image"}>Ảnh minh hoạ</div>
 
                         </div>
@@ -366,7 +366,8 @@ const NewsDetail = (props) => {
                     <div className={"mb-3 mt-3"}>
 
                     </div>
-                    <NewsAnother news={result} pageName ={props.urlPage}></NewsAnother>
+
+                    <NewsAnother news={result} pageName ={props.urlPage} count={5}></NewsAnother>
 
                 </div>
             </div>

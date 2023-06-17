@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Parser from 'rss-parser';
 import ImgParser from 'html-react-parser';
-import {FooterNewItem, New} from "../component/NewBody";
+import { New} from "../component/NewBodyVer2";
 import NewsAnother from "../component/NewAnother";
 import * as news from "../data/NewsRSS"
+import {useLocation} from "react-router-dom";
 
 
  export const NewsFeed = (props) => {
-    /* let result = news.getNews(props.url)*/
     const [articles, setArticles] = useState([]);
     let result =[];
     useEffect(() => {
@@ -81,7 +81,7 @@ import * as news from "../data/NewsRSS"
                  <div className={"warp"}>
                      <h2 className={"wrap-title"}> Tin khác</h2>
                  </div>
-                 <NewsAnother news={result} pageName ={page}></NewsAnother>
+                 <NewsAnother news={result} pageName ={page} count={props.end}></NewsAnother>
              </div>
 
          </div>

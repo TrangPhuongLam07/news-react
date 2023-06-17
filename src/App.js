@@ -11,6 +11,7 @@ import HomePage from "./component/HomePage";
 import Footer from "./component/Footer";
 import  {Routes,Route} from  'react-router-dom'
 import  {HomeDetail} from './component/HomeDetail.js'
+import  {NewDetail} from './component/NewDetail.js'
 import EducationPage from "./component/Education";
 import {SearchPage} from "./component/Search";
 import {NotFound} from "./component/NotFound";
@@ -42,7 +43,7 @@ function App() {
                         <Route path={"/Thoi-Su"} element={<ThoisuPage />}> </Route>
                         <Route path={"/Thoi-su/:id"} element ={<HomeDetail />} />
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
-                        <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Hoc-Duong/:id"} element ={<NewDetail />} />
 
                         <Route path={"/Giao-Duc-Phap-Luat"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"

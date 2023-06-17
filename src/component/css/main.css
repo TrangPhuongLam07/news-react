@@ -132,6 +132,16 @@
     border-color: #c31e40;
     color: #fff;
 }
-
+.wrap--btn__sroll-top {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+}
+.btn.btn__sroll-top{
+    padding:8px ;
+    border-radius: 10px;
+    background-color: #61dafb;
+    color: #ffffff;
+}
 
 

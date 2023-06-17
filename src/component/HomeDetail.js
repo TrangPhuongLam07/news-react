@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {json, useParams} from "react-router-dom";
 import * as cheerio from 'cheerio'
 import  request from 'request-promise'
@@ -17,11 +17,13 @@ export const  HomeDetail = React.memo(() =>{
     const [error,setError] = useState(null)
     const [show,setShow] = useState(false)
     const [maxNew,setMaxNew] = useState(5)
+    const [scroll,setScroll] = useState(false)
 
 
     const baseUrl = "https://giaoducthoidai.vn/";
     const params = useParams();
     const id = params.id;
+    let interval = useRef(-1);
     console.log("Id:" + id)
 useEffect( () => {
         request(baseUrl + id, (error, response, html) => {
@@ -352,6 +354,20 @@ useEffect( () => {
         }></Text_to_speech>
         )
     }
+    const  autoRoll = () =>{
+        let scrollInterval = setInterval(function() {
+            window.scrollBy(0, 1);
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+                clearInterval(scrollInterval);
+            }
+        }, 50);
+        interval.current = scrollInterval;
+        setScroll(true)
+    }
+    const  stopSroll = () => {
+        clearInterval(interval.current);
+        setScroll(false)
+    }
 
     console.log("render")
     return(
@@ -426,6 +442,13 @@ useEffect( () => {
                             {maxNew < listNews.length && <button onClick={()=> setMaxNew(prevState => prevState + 3)} className={"btn--load"}>Xem thêm</button>}
                             {maxNew >=listNews.length && <button onClick={()=> setMaxNew(5)} className={"btn--load"}>Hiển thị ít lại</button>}
                         </div>
+                    </div>
+
+                    <div className={"warp--btn__sroll"}>
+                        {!scroll && <button className={"btn btn--auto__sroll"} onClick={autoRoll }><i
+                            className="fa fa-play-circle mr-1" aria-hidden="true"></i>Tự động cuộn</button>}
+                        {scroll && <button className={"btn btn--auto__sroll"} onClick={stopSroll }>
+                            <i className="fa fa-stop-circle mr-1" aria-hidden="true"></i>Dừng lại</button>}
                     </div>
                 </div>
             }

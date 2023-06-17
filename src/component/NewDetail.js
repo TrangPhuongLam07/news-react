@@ -13,12 +13,20 @@ import {convertDate} from "./api/dateTime";
 export const NewDetail = React.memo(()=>{
     const [posts,setPosts] = useState([])
     const  [listNews,setListNews] = useState(data)
+    const [backToTop,setBackToTop] = useState(false)
 
     const baseUrl = "https://giaoducthoidai.vn/";
     const params = useParams();
     const id = params.id;
     console.log("id: "+ id)
     useEffect(()=>{
+        window.addEventListener("scroll",()=>{
+            if(window.scrollY > 100){
+                setBackToTop(true)
+            }else{
+                setBackToTop(false)
+            }
+        })
         request(baseUrl+id, (error, response, html) => {
             if(!error && response.statusCode === 200) {
                 const $ = cheerio.load(html);
@@ -188,6 +196,12 @@ export const NewDetail = React.memo(()=>{
             );
         }
     });
+    const scrollUp = () =>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
     return(
         <div className={"detail"}>
             {posts !== null && posts.news !== undefined
@@ -239,6 +253,22 @@ export const NewDetail = React.memo(()=>{
 
                             ))}
                         </div>
+                    </div>
+
+                    <div >
+                        {backToTop && (
+                            <button style={{position: "fixed",
+                                            bottom: "50px",
+                                            right: "50px",
+                                            height: "50px",
+                                            width: "50px",
+                                            fontSize: "50px",
+                                            }}
+                                    onClick={scrollUp}
+                            >
+                                ^
+                            </button>
+                        )}
                     </div>
                 </div>
             }

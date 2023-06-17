@@ -41,9 +41,9 @@ function App() {
                         <Route path={"*"} element ={<NotFound />} />
 
                         <Route path={"/Thoi-Su"} element={<ThoisuPage />}> </Route>
-                        <Route path={"/Thoi-su/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Thoi-su/:id"} element ={<NewDetail />} />
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
-                        <Route path={"/Hoc-Duong/:id"} element ={<NewDetail />} />
+                        <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
 
                         <Route path={"/Giao-Duc-Phap-Luat"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"

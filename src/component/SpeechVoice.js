@@ -1,4 +1,4 @@
-import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition'
+import SpeechRecognition, {useSpeechRecognition} from 'react-speech-recognition';
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 

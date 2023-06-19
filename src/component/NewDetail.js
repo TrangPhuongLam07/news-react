@@ -115,7 +115,6 @@ export const NewDetail = React.memo(()=>{
                                 text:$(el).text()
                             }
                         }else {
-                            console.log("Strong:" + item.find('strong').text())
                             item =  {
                                 index : $(el).index(),
                                 type :"strong",

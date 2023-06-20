@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-
+import {result} from "../data/rss"
 import "./css/header.css"
 
-function SearchBar({ placeholder, data }) {
+function SearchBar({ placeholder}) {
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
+    const [data,setData] = useState(result);
 
     const handleFilter = (event) => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
-        const newFilter = data.filter((value) => {
-            return value.title.toLowerCase().includes(searchWord.toLowerCase());
+        const newFilter = data.filter((item) => {
+            return item.title.toLowerCase().includes(searchWord.toLowerCase());
         });
 
         if (searchWord === "") {
@@ -20,13 +21,8 @@ function SearchBar({ placeholder, data }) {
         }
     };
 
-    const clearInput = () => {
-        setFilteredData([]);
-        setWordEntered("");
-    };
-
     return (
-        <div className="search">
+        <div className="searchBar">
             <div className="searchInputs">
                 <input
                     type="text"
@@ -36,12 +32,12 @@ function SearchBar({ placeholder, data }) {
                 />
 
             </div>
-            {filteredData.length != 0 && (
+            {filteredData.length !== 0 && (
                 <div className="dataResult">
-                    {filteredData.slice(0, 15).map((value, key) => {
+                    {filteredData.slice(0, 15).map((item) => {
                         return (
-                            <a className="dataItem" href={value.link} target="_blank">
-                                <p>{value.title} </p>
+                            <a className="dataItem" href={`/Trang-Chu/${item.id}`} target="_blank">
+                                <p>{item.title} </p>
                             </a>
                         );
                     })}

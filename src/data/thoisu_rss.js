@@ -10,7 +10,6 @@ const  parse = async url =>{
     const feed = await parser.parseURL(url);
     feed.items.forEach(item =>{
         article.push( item );
-        // console.log(item)
     });
     console.log(feed)
 }
@@ -19,10 +18,13 @@ await parse(feedURL);
 
 
 data = []
+
+//xử lý feeds lấy ra attributes cần thiết
 for(let i = 0; i < article.length;i++) {
 
     let id = article[i].guid.split("/");
     let image = "" ;
+    //xử lý ảnh khi fetching
     try {
         image = Parser(article[i].content)[0].props.children.props.src.toString().replace("/80x80","")
     }catch {

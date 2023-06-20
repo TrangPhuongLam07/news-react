@@ -11,6 +11,8 @@ import HomePage from "./component/HomePage";
 import Footer from "./component/Footer";
 import  {Routes,Route} from  'react-router-dom'
 import  {HomeDetail} from './component/HomeDetail.js'
+import  {NewDetail} from './component/NewDetail.js'
+import NewsDetail from "./component/NewsDetail";
 import EducationPage from "./component/Education";
 import {SearchPage} from "./component/Search";
 import {NotFound} from "./component/NotFound";
@@ -19,6 +21,8 @@ import HocduongPage from "./component/HocduongPage"
 import CaculturePage from "./component/CulturePage";
 import SportPage from "./component/SportPage";
 import NewsFeed from "./data/NewFeeds";
+import {ThegioiPage} from "./component/ThegioiPage";
+import {SuckhoePage} from "./component/SuckhoePage"
 function App() {
     return (
         <div className="">
@@ -40,9 +44,13 @@ function App() {
                         <Route path={"*"} element ={<NotFound />} />
 
                         <Route path={"/Thoi-Su"} element={<ThoisuPage />}> </Route>
-                        <Route path={"/Thoi-su/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Thoi-su/:id"} element ={<NewDetail />} />
                         <Route path={"/Hoc-Duong"} element={<HocduongPage />}> </Route>
                         <Route path={"/Hoc-Duong/:id"} element ={<HomeDetail />} />
+                        <Route path={"/The-Gioi"} element={<ThegioiPage />}> </Route>
+                        <Route path={"/The-Gioi/:id"} element ={<HomeDetail />} />
+                        <Route path={"/Suc-Khoe"} element={<SuckhoePage />}> </Route>
+                        <Route path={"/Suc-Khoe/:id"} element ={<HomeDetail />} />
 
                         <Route path={"/Giao-Duc-Phap-Luat"} element={
                             <NewsFeed url="https://giaoducthoidai.vn/rss/phap-luat-phap-luat-8.rss"

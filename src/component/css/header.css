@@ -80,6 +80,7 @@ body {
     padding-right: 32px;
 
 }
+
 .logo-header > .search > .icon {
     position: absolute;
     right: 12px;
@@ -151,3 +152,86 @@ body {
 .search button:focus {
     outline: 0 !important;
 }
+/*search-voice css*/
+.search-voice button {
+    z-index: 10;
+    margin-left: -33px;
+    background-color: transparent;
+    border: none;
+    padding: 4px;
+    overflow: hidden;
+    list-style: none;
+    color: #c31e40;
+    outline:none;
+}
+.search-voice button:hover {
+    color: #c31e40;
+    opacity: 0.8;
+}
+.logo-header .search-voice{
+    position: relative;
+    margin-right: 100px;
+    margin-left: -60px;
+    display: inherit;
+}
+.logo-header .search-voice input{
+    background: #f5f5f5;
+    border: 1px solid #e7e7e7;
+    border-radius: 22px;
+    width: 400px;
+    height: 38px;
+    box-shadow: none;
+    padding-right: 32px;
+
+}
+/*searchBar */
+
+.logo-header .searchBar{
+    position: relative;
+    margin-right: 100px;
+    margin-left: auto;
+    display: block;
+}
+.searchBar input{
+    background: #f5f5f5;
+    border: 1px solid #e7e7e7;
+    border-radius: 22px;
+    width: 220px;
+    height: 38px;
+    box-shadow: none;
+    padding-right: 32px;
+}
+.dataResult {
+    margin-top: 5px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    display: list-item;
+    position: inherit;
+}
+
+.dataResult::-webkit-scrollbar {
+    display: none;
+}
+.dataResult .dataItem {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.dataItem p {
+    margin-left: 10px;
+}
+a {
+    text-decoration: none;
+}
+
+
+
+
+

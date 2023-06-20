@@ -106,7 +106,8 @@ function Header() {
                 </div>
             </div>
             <div className={"container logo-header"}>
-                <div className={"logo"}></div>
+                <Link to={`/Trang-Chu`}><div className={"logo"}></div></Link>
+
                 <div className={"search"}>
                     <input id={"search"} type={"text"} className={"form-control txt-search"}
                            onKeyPress={handleKeyPress}/>

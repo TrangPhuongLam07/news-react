@@ -60,7 +60,6 @@ export const TextToSpeech = () => {
 
 
 export const VoiceRSS = (props) =>{
-    const  text1 = "Tên tôi là Trang"
     const apiKey = '7c6a7e181116466ba4e27aa84f81d607';
     const apiUrl = `http://api.voicerss.org/?key=${apiKey}&hl=vi-vn&src=${props.text}`;
     const audioRef = React.useRef(null);

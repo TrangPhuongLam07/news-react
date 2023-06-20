@@ -3,7 +3,7 @@ import {result} from "../data/rss.js"
 import "./css/header.css"
 import {Link} from "react-router-dom";
 import {SpeechVoice} from "./SpeechVoice";
-//import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar";
 
 const listItem = [
     {
@@ -117,7 +117,7 @@ function Header() {
                     }></i></button>
 
                 </div>
-                {/*<SearchBar placeholder={"Enter a Search"} data={result}></SearchBar>*/}
+                {/*<SearchBar placeholder={"  Enter  Search"} data={result}></SearchBar>*/}
 
                 <SpeechVoice></SpeechVoice>
                 <h2 className={"logo-gdtd"}>

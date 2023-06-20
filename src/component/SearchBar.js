@@ -22,7 +22,7 @@ function SearchBar({ placeholder}) {
     };
 
     return (
-        <div className="search">
+        <div className="searchBar">
             <div className="searchInputs">
                 <input
                     type="text"
@@ -32,7 +32,7 @@ function SearchBar({ placeholder}) {
                 />
 
             </div>
-            {filteredData.length != 0 && (
+            {filteredData.length !== 0 && (
                 <div className="dataResult">
                     {filteredData.slice(0, 15).map((item) => {
                         return (

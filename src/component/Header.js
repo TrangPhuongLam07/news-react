@@ -117,7 +117,7 @@ function Header() {
                     }></i></button>
 
                 </div>
-                {/*<SearchBar placeholder={"Enter a Search"} data={result}></SearchBar>*/}
+                {/*<SearchBar placeholder={"  Enter  Search"} data={result}></SearchBar>*/}
 
                 <SpeechVoice></SpeechVoice>
                 <h2 className={"logo-gdtd"}>
